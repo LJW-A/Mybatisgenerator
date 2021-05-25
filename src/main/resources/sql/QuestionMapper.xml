@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xdl.ydma.dao.QuestionMapper">
+  <resultMap id="BaseResultMap" type="cn.xdl.ydma.entity.Question">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="author" jdbcType="INTEGER" property="author" />
+    <result column="add_date" jdbcType="TIMESTAMP" property="addDate" />
+    <result column="degree" jdbcType="INTEGER" property="degree" />
+    <result column="answer" jdbcType="VARCHAR" property="answer" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="knowledge_id" jdbcType="INTEGER" property="knowledgeId" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="chapter_id" jdbcType="INTEGER" property="chapterId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.xdl.ydma.entity.QuestionWithBLOBs">
+    <result column="body" jdbcType="LONGVARCHAR" property="body" />
+    <result column="analysis" jdbcType="LONGVARCHAR" property="analysis" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, author, add_date, degree, answer, type_id, knowledge_id, subject_id, chapter_id
+  </sql>
+  <sql id="Blob_Column_List">
+    body, analysis
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from question
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from question
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xdl.ydma.entity.QuestionWithBLOBs">
+    insert into question (id, author, add_date, 
+      degree, answer, type_id, 
+      knowledge_id, subject_id, chapter_id, 
+      body, analysis)
+    values (#{id,jdbcType=INTEGER}, #{author,jdbcType=INTEGER}, #{addDate,jdbcType=TIMESTAMP}, 
+      #{degree,jdbcType=INTEGER}, #{answer,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
+      #{knowledgeId,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, #{chapterId,jdbcType=INTEGER}, 
+      #{body,jdbcType=LONGVARCHAR}, #{analysis,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xdl.ydma.entity.QuestionWithBLOBs">
+    insert into question
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="addDate != null">
+        add_date,
+      </if>
+      <if test="degree != null">
+        degree,
+      </if>
+      <if test="answer != null">
+        answer,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="knowledgeId != null">
+        knowledge_id,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="chapterId != null">
+        chapter_id,
+      </if>
+      <if test="body != null">
+        body,
+      </if>
+      <if test="analysis != null">
+        analysis,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=INTEGER},
+      </if>
+      <if test="addDate != null">
+        #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="degree != null">
+        #{degree,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="knowledgeId != null">
+        #{knowledgeId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null">
+        #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="body != null">
+        #{body,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="analysis != null">
+        #{analysis,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xdl.ydma.entity.QuestionWithBLOBs">
+    update question
+    <set>
+      <if test="author != null">
+        author = #{author,jdbcType=INTEGER},
+      </if>
+      <if test="addDate != null">
+        add_date = #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="degree != null">
+        degree = #{degree,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null">
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="knowledgeId != null">
+        knowledge_id = #{knowledgeId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        subject_id = #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null">
+        chapter_id = #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="body != null">
+        body = #{body,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="analysis != null">
+        analysis = #{analysis,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.xdl.ydma.entity.QuestionWithBLOBs">
+    update question
+    set author = #{author,jdbcType=INTEGER},
+      add_date = #{addDate,jdbcType=TIMESTAMP},
+      degree = #{degree,jdbcType=INTEGER},
+      answer = #{answer,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      knowledge_id = #{knowledgeId,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      chapter_id = #{chapterId,jdbcType=INTEGER},
+      body = #{body,jdbcType=LONGVARCHAR},
+      analysis = #{analysis,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xdl.ydma.entity.Question">
+    update question
+    set author = #{author,jdbcType=INTEGER},
+      add_date = #{addDate,jdbcType=TIMESTAMP},
+      degree = #{degree,jdbcType=INTEGER},
+      answer = #{answer,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      knowledge_id = #{knowledgeId,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      chapter_id = #{chapterId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.xdl.ydma.entity.Question">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="author" jdbcType="INTEGER" property="author" />
+    <result column="add_date" jdbcType="TIMESTAMP" property="addDate" />
+    <result column="degree" jdbcType="INTEGER" property="degree" />
+    <result column="answer" jdbcType="VARCHAR" property="answer" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="knowledge_id" jdbcType="INTEGER" property="knowledgeId" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="chapter_id" jdbcType="INTEGER" property="chapterId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.xdl.ydma.entity.QuestionWithBLOBs">
+    <result column="body" jdbcType="LONGVARCHAR" property="body" />
+    <result column="analysis" jdbcType="LONGVARCHAR" property="analysis" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, author, add_date, degree, answer, type_id, knowledge_id, subject_id, chapter_id
+  </sql>
+  <sql id="Blob_Column_List">
+    body, analysis
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from question
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from question
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xdl.ydma.entity.QuestionWithBLOBs">
+    insert into question (id, author, add_date, 
+      degree, answer, type_id, 
+      knowledge_id, subject_id, chapter_id, 
+      body, analysis)
+    values (#{id,jdbcType=INTEGER}, #{author,jdbcType=INTEGER}, #{addDate,jdbcType=TIMESTAMP}, 
+      #{degree,jdbcType=INTEGER}, #{answer,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
+      #{knowledgeId,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, #{chapterId,jdbcType=INTEGER}, 
+      #{body,jdbcType=LONGVARCHAR}, #{analysis,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xdl.ydma.entity.QuestionWithBLOBs">
+    insert into question
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="addDate != null">
+        add_date,
+      </if>
+      <if test="degree != null">
+        degree,
+      </if>
+      <if test="answer != null">
+        answer,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="knowledgeId != null">
+        knowledge_id,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="chapterId != null">
+        chapter_id,
+      </if>
+      <if test="body != null">
+        body,
+      </if>
+      <if test="analysis != null">
+        analysis,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=INTEGER},
+      </if>
+      <if test="addDate != null">
+        #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="degree != null">
+        #{degree,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="knowledgeId != null">
+        #{knowledgeId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null">
+        #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="body != null">
+        #{body,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="analysis != null">
+        #{analysis,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xdl.ydma.entity.QuestionWithBLOBs">
+    update question
+    <set>
+      <if test="author != null">
+        author = #{author,jdbcType=INTEGER},
+      </if>
+      <if test="addDate != null">
+        add_date = #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="degree != null">
+        degree = #{degree,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null">
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="knowledgeId != null">
+        knowledge_id = #{knowledgeId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        subject_id = #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null">
+        chapter_id = #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="body != null">
+        body = #{body,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="analysis != null">
+        analysis = #{analysis,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.xdl.ydma.entity.QuestionWithBLOBs">
+    update question
+    set author = #{author,jdbcType=INTEGER},
+      add_date = #{addDate,jdbcType=TIMESTAMP},
+      degree = #{degree,jdbcType=INTEGER},
+      answer = #{answer,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      knowledge_id = #{knowledgeId,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      chapter_id = #{chapterId,jdbcType=INTEGER},
+      body = #{body,jdbcType=LONGVARCHAR},
+      analysis = #{analysis,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xdl.ydma.entity.Question">
+    update question
+    set author = #{author,jdbcType=INTEGER},
+      add_date = #{addDate,jdbcType=TIMESTAMP},
+      degree = #{degree,jdbcType=INTEGER},
+      answer = #{answer,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      knowledge_id = #{knowledgeId,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      chapter_id = #{chapterId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

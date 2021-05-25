@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xdl.ydma.dao.IssueMapper">
+  <resultMap id="BaseResultMap" type="cn.xdl.ydma.entity.Issue">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="headline" jdbcType="VARCHAR" property="headline" />
+    <result column="issue_context" jdbcType="VARCHAR" property="issueContext" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
+    <result column="answer_count" jdbcType="INTEGER" property="answerCount" />
+    <result column="browse_count" jdbcType="INTEGER" property="browseCount" />
+    <result column="video_id" jdbcType="INTEGER" property="videoId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="right_answer_id" jdbcType="INTEGER" property="rightAnswerId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, headline, issue_context, publish_time, answer_count, browse_count, video_id, 
+    user_id, right_answer_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from issue
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from issue
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xdl.ydma.entity.Issue">
+    insert into issue (id, headline, issue_context, 
+      publish_time, answer_count, browse_count, 
+      video_id, user_id, right_answer_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{headline,jdbcType=VARCHAR}, #{issueContext,jdbcType=VARCHAR}, 
+      #{publishTime,jdbcType=TIMESTAMP}, #{answerCount,jdbcType=INTEGER}, #{browseCount,jdbcType=INTEGER}, 
+      #{videoId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{rightAnswerId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xdl.ydma.entity.Issue">
+    insert into issue
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="headline != null">
+        headline,
+      </if>
+      <if test="issueContext != null">
+        issue_context,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="answerCount != null">
+        answer_count,
+      </if>
+      <if test="browseCount != null">
+        browse_count,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="rightAnswerId != null">
+        right_answer_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="headline != null">
+        #{headline,jdbcType=VARCHAR},
+      </if>
+      <if test="issueContext != null">
+        #{issueContext,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="answerCount != null">
+        #{answerCount,jdbcType=INTEGER},
+      </if>
+      <if test="browseCount != null">
+        #{browseCount,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="rightAnswerId != null">
+        #{rightAnswerId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xdl.ydma.entity.Issue">
+    update issue
+    <set>
+      <if test="headline != null">
+        headline = #{headline,jdbcType=VARCHAR},
+      </if>
+      <if test="issueContext != null">
+        issue_context = #{issueContext,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="answerCount != null">
+        answer_count = #{answerCount,jdbcType=INTEGER},
+      </if>
+      <if test="browseCount != null">
+        browse_count = #{browseCount,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="rightAnswerId != null">
+        right_answer_id = #{rightAnswerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xdl.ydma.entity.Issue">
+    update issue
+    set headline = #{headline,jdbcType=VARCHAR},
+      issue_context = #{issueContext,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      answer_count = #{answerCount,jdbcType=INTEGER},
+      browse_count = #{browseCount,jdbcType=INTEGER},
+      video_id = #{videoId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      right_answer_id = #{rightAnswerId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.xdl.ydma.entity.Issue">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="headline" jdbcType="VARCHAR" property="headline" />
+    <result column="issue_context" jdbcType="VARCHAR" property="issueContext" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
+    <result column="answer_count" jdbcType="INTEGER" property="answerCount" />
+    <result column="browse_count" jdbcType="INTEGER" property="browseCount" />
+    <result column="video_id" jdbcType="INTEGER" property="videoId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="right_answer_id" jdbcType="INTEGER" property="rightAnswerId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, headline, issue_context, publish_time, answer_count, browse_count, video_id, 
+    user_id, right_answer_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from issue
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from issue
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xdl.ydma.entity.Issue">
+    insert into issue (id, headline, issue_context, 
+      publish_time, answer_count, browse_count, 
+      video_id, user_id, right_answer_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{headline,jdbcType=VARCHAR}, #{issueContext,jdbcType=VARCHAR}, 
+      #{publishTime,jdbcType=TIMESTAMP}, #{answerCount,jdbcType=INTEGER}, #{browseCount,jdbcType=INTEGER}, 
+      #{videoId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{rightAnswerId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xdl.ydma.entity.Issue">
+    insert into issue
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="headline != null">
+        headline,
+      </if>
+      <if test="issueContext != null">
+        issue_context,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="answerCount != null">
+        answer_count,
+      </if>
+      <if test="browseCount != null">
+        browse_count,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="rightAnswerId != null">
+        right_answer_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="headline != null">
+        #{headline,jdbcType=VARCHAR},
+      </if>
+      <if test="issueContext != null">
+        #{issueContext,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="answerCount != null">
+        #{answerCount,jdbcType=INTEGER},
+      </if>
+      <if test="browseCount != null">
+        #{browseCount,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="rightAnswerId != null">
+        #{rightAnswerId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xdl.ydma.entity.Issue">
+    update issue
+    <set>
+      <if test="headline != null">
+        headline = #{headline,jdbcType=VARCHAR},
+      </if>
+      <if test="issueContext != null">
+        issue_context = #{issueContext,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="answerCount != null">
+        answer_count = #{answerCount,jdbcType=INTEGER},
+      </if>
+      <if test="browseCount != null">
+        browse_count = #{browseCount,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="rightAnswerId != null">
+        right_answer_id = #{rightAnswerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xdl.ydma.entity.Issue">
+    update issue
+    set headline = #{headline,jdbcType=VARCHAR},
+      issue_context = #{issueContext,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      answer_count = #{answerCount,jdbcType=INTEGER},
+      browse_count = #{browseCount,jdbcType=INTEGER},
+      video_id = #{videoId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      right_answer_id = #{rightAnswerId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

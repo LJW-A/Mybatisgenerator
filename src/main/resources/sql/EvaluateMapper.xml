@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xdl.ydma.dao.EvaluateMapper">
+  <resultMap id="BaseResultMap" type="cn.xdl.ydma.entity.Evaluate">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="use_id" jdbcType="INTEGER" property="useId" />
+    <result column="context" jdbcType="VARCHAR" property="context" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
+    <result column="video_id" jdbcType="INTEGER" property="videoId" />
+    <result column="like_count" jdbcType="INTEGER" property="likeCount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, use_id, context, publish_time, video_id, like_count
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from evaluate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from evaluate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xdl.ydma.entity.Evaluate">
+    insert into evaluate (id, use_id, context, 
+      publish_time, video_id, like_count
+      )
+    values (#{id,jdbcType=INTEGER}, #{useId,jdbcType=INTEGER}, #{context,jdbcType=VARCHAR}, 
+      #{publishTime,jdbcType=TIMESTAMP}, #{videoId,jdbcType=INTEGER}, #{likeCount,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xdl.ydma.entity.Evaluate">
+    insert into evaluate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="useId != null">
+        use_id,
+      </if>
+      <if test="context != null">
+        context,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="likeCount != null">
+        like_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="useId != null">
+        #{useId,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="likeCount != null">
+        #{likeCount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xdl.ydma.entity.Evaluate">
+    update evaluate
+    <set>
+      <if test="useId != null">
+        use_id = #{useId,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        context = #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="likeCount != null">
+        like_count = #{likeCount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xdl.ydma.entity.Evaluate">
+    update evaluate
+    set use_id = #{useId,jdbcType=INTEGER},
+      context = #{context,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      video_id = #{videoId,jdbcType=INTEGER},
+      like_count = #{likeCount,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.xdl.ydma.entity.Evaluate">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="use_id" jdbcType="INTEGER" property="useId" />
+    <result column="context" jdbcType="VARCHAR" property="context" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
+    <result column="video_id" jdbcType="INTEGER" property="videoId" />
+    <result column="like_count" jdbcType="INTEGER" property="likeCount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, use_id, context, publish_time, video_id, like_count
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from evaluate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from evaluate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xdl.ydma.entity.Evaluate">
+    insert into evaluate (id, use_id, context, 
+      publish_time, video_id, like_count
+      )
+    values (#{id,jdbcType=INTEGER}, #{useId,jdbcType=INTEGER}, #{context,jdbcType=VARCHAR}, 
+      #{publishTime,jdbcType=TIMESTAMP}, #{videoId,jdbcType=INTEGER}, #{likeCount,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xdl.ydma.entity.Evaluate">
+    insert into evaluate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="useId != null">
+        use_id,
+      </if>
+      <if test="context != null">
+        context,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="likeCount != null">
+        like_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="useId != null">
+        #{useId,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="likeCount != null">
+        #{likeCount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xdl.ydma.entity.Evaluate">
+    update evaluate
+    <set>
+      <if test="useId != null">
+        use_id = #{useId,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        context = #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="likeCount != null">
+        like_count = #{likeCount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xdl.ydma.entity.Evaluate">
+    update evaluate
+    set use_id = #{useId,jdbcType=INTEGER},
+      context = #{context,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      video_id = #{videoId,jdbcType=INTEGER},
+      like_count = #{likeCount,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

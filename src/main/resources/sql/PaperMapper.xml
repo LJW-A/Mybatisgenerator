@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xdl.ydma.dao.PaperMapper">
+  <resultMap id="BaseResultMap" type="cn.xdl.ydma.entity.Paper">
+    <id column="paper_id" jdbcType="INTEGER" property="paperId" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="limit_time" jdbcType="INTEGER" property="limitTime" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="begintime" jdbcType="TIMESTAMP" property="begintime" />
+    <result column="endtime" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="question_total" jdbcType="INTEGER" property="questionTotal" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    paper_id, type_id, user_id, subject_id, score, limit_time, createtime, begintime, 
+    endtime, status, question_total, name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from paper
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from paper
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xdl.ydma.entity.Paper">
+    insert into paper (paper_id, type_id, user_id, 
+      subject_id, score, limit_time, 
+      createtime, begintime, endtime, 
+      status, question_total, name
+      )
+    values (#{paperId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{subjectId,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, #{limitTime,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{begintime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{questionTotal,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xdl.ydma.entity.Paper">
+    insert into paper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paperId != null">
+        paper_id,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="limitTime != null">
+        limit_time,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="begintime != null">
+        begintime,
+      </if>
+      <if test="endtime != null">
+        endtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="questionTotal != null">
+        question_total,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paperId != null">
+        #{paperId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="limitTime != null">
+        #{limitTime,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="begintime != null">
+        #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="questionTotal != null">
+        #{questionTotal,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xdl.ydma.entity.Paper">
+    update paper
+    <set>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        subject_id = #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="limitTime != null">
+        limit_time = #{limitTime,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="begintime != null">
+        begintime = #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        endtime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="questionTotal != null">
+        question_total = #{questionTotal,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xdl.ydma.entity.Paper">
+    update paper
+    set type_id = #{typeId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      score = #{score,jdbcType=INTEGER},
+      limit_time = #{limitTime,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      begintime = #{begintime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      question_total = #{questionTotal,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR}
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.xdl.ydma.entity.Paper">
+    <id column="paper_id" jdbcType="INTEGER" property="paperId" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="limit_time" jdbcType="INTEGER" property="limitTime" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="begintime" jdbcType="TIMESTAMP" property="begintime" />
+    <result column="endtime" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="question_total" jdbcType="INTEGER" property="questionTotal" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    paper_id, type_id, user_id, subject_id, score, limit_time, createtime, begintime, 
+    endtime, status, question_total, name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from paper
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from paper
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xdl.ydma.entity.Paper">
+    insert into paper (paper_id, type_id, user_id, 
+      subject_id, score, limit_time, 
+      createtime, begintime, endtime, 
+      status, question_total, name
+      )
+    values (#{paperId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{subjectId,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, #{limitTime,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{begintime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{questionTotal,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xdl.ydma.entity.Paper">
+    insert into paper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paperId != null">
+        paper_id,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="limitTime != null">
+        limit_time,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="begintime != null">
+        begintime,
+      </if>
+      <if test="endtime != null">
+        endtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="questionTotal != null">
+        question_total,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paperId != null">
+        #{paperId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="limitTime != null">
+        #{limitTime,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="begintime != null">
+        #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="questionTotal != null">
+        #{questionTotal,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xdl.ydma.entity.Paper">
+    update paper
+    <set>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        subject_id = #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="limitTime != null">
+        limit_time = #{limitTime,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="begintime != null">
+        begintime = #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        endtime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="questionTotal != null">
+        question_total = #{questionTotal,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xdl.ydma.entity.Paper">
+    update paper
+    set type_id = #{typeId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      score = #{score,jdbcType=INTEGER},
+      limit_time = #{limitTime,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      begintime = #{begintime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      question_total = #{questionTotal,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR}
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </update>
+</mapper>

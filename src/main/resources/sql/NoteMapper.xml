@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xdl.ydma.dao.NoteMapper">
+  <resultMap id="BaseResultMap" type="cn.xdl.ydma.entity.Note">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
+    <result column="like_count" jdbcType="INTEGER" property="likeCount" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="video_id" jdbcType="INTEGER" property="videoId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.xdl.ydma.entity.Note">
+    <result column="context" jdbcType="LONGVARCHAR" property="context" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, publish_time, like_count, user_id, video_id, title
+  </sql>
+  <sql id="Blob_Column_List">
+    context
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from note
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from note
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xdl.ydma.entity.Note">
+    insert into note (id, publish_time, like_count, 
+      user_id, video_id, title, 
+      context)
+    values (#{id,jdbcType=INTEGER}, #{publishTime,jdbcType=TIMESTAMP}, #{likeCount,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{videoId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{context,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xdl.ydma.entity.Note">
+    insert into note
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="likeCount != null">
+        like_count,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="context != null">
+        context,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="likeCount != null">
+        #{likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xdl.ydma.entity.Note">
+    update note
+    <set>
+      <if test="publishTime != null">
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="likeCount != null">
+        like_count = #{likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        context = #{context,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.xdl.ydma.entity.Note">
+    update note
+    set publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      like_count = #{likeCount,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      video_id = #{videoId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      context = #{context,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xdl.ydma.entity.Note">
+    update note
+    set publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      like_count = #{likeCount,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      video_id = #{videoId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.xdl.ydma.entity.Note">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
+    <result column="like_count" jdbcType="INTEGER" property="likeCount" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="video_id" jdbcType="INTEGER" property="videoId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.xdl.ydma.entity.Note">
+    <result column="context" jdbcType="LONGVARCHAR" property="context" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, publish_time, like_count, user_id, video_id, title
+  </sql>
+  <sql id="Blob_Column_List">
+    context
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from note
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from note
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xdl.ydma.entity.Note">
+    insert into note (id, publish_time, like_count, 
+      user_id, video_id, title, 
+      context)
+    values (#{id,jdbcType=INTEGER}, #{publishTime,jdbcType=TIMESTAMP}, #{likeCount,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{videoId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{context,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xdl.ydma.entity.Note">
+    insert into note
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="likeCount != null">
+        like_count,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="context != null">
+        context,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="likeCount != null">
+        #{likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xdl.ydma.entity.Note">
+    update note
+    <set>
+      <if test="publishTime != null">
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="likeCount != null">
+        like_count = #{likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        context = #{context,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.xdl.ydma.entity.Note">
+    update note
+    set publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      like_count = #{likeCount,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      video_id = #{videoId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      context = #{context,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xdl.ydma.entity.Note">
+    update note
+    set publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      like_count = #{likeCount,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      video_id = #{videoId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

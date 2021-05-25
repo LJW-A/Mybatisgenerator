@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xdl.ydma.dao.QuestionOptionsMapper">
+  <resultMap id="BaseResultMap" type="cn.xdl.ydma.entity.QuestionOptions">
+    <id column="option_id" jdbcType="INTEGER" property="optionId" />
+    <result column="question_id" jdbcType="INTEGER" property="questionId" />
+    <result column="option_name" jdbcType="VARCHAR" property="optionName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    option_id, question_id, option_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from question_options
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from question_options
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xdl.ydma.entity.QuestionOptions">
+    insert into question_options (option_id, question_id, option_name
+      )
+    values (#{optionId,jdbcType=INTEGER}, #{questionId,jdbcType=INTEGER}, #{optionName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xdl.ydma.entity.QuestionOptions">
+    insert into question_options
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="optionId != null">
+        option_id,
+      </if>
+      <if test="questionId != null">
+        question_id,
+      </if>
+      <if test="optionName != null">
+        option_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="optionId != null">
+        #{optionId,jdbcType=INTEGER},
+      </if>
+      <if test="questionId != null">
+        #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="optionName != null">
+        #{optionName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xdl.ydma.entity.QuestionOptions">
+    update question_options
+    <set>
+      <if test="questionId != null">
+        question_id = #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="optionName != null">
+        option_name = #{optionName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xdl.ydma.entity.QuestionOptions">
+    update question_options
+    set question_id = #{questionId,jdbcType=INTEGER},
+      option_name = #{optionName,jdbcType=VARCHAR}
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.xdl.ydma.entity.QuestionOptions">
+    <id column="option_id" jdbcType="INTEGER" property="optionId" />
+    <result column="question_id" jdbcType="INTEGER" property="questionId" />
+    <result column="option_name" jdbcType="VARCHAR" property="optionName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    option_id, question_id, option_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from question_options
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from question_options
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xdl.ydma.entity.QuestionOptions">
+    insert into question_options (option_id, question_id, option_name
+      )
+    values (#{optionId,jdbcType=INTEGER}, #{questionId,jdbcType=INTEGER}, #{optionName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xdl.ydma.entity.QuestionOptions">
+    insert into question_options
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="optionId != null">
+        option_id,
+      </if>
+      <if test="questionId != null">
+        question_id,
+      </if>
+      <if test="optionName != null">
+        option_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="optionId != null">
+        #{optionId,jdbcType=INTEGER},
+      </if>
+      <if test="questionId != null">
+        #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="optionName != null">
+        #{optionName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xdl.ydma.entity.QuestionOptions">
+    update question_options
+    <set>
+      <if test="questionId != null">
+        question_id = #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="optionName != null">
+        option_name = #{optionName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xdl.ydma.entity.QuestionOptions">
+    update question_options
+    set question_id = #{questionId,jdbcType=INTEGER},
+      option_name = #{optionName,jdbcType=VARCHAR}
+    where option_id = #{optionId,jdbcType=INTEGER}
+  </update>
+</mapper>

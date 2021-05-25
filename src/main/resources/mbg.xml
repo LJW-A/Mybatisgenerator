@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE generatorConfiguration    
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"    
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+  
+<generatorConfiguration>  
+		<!-- mybatis 的驱动包的位置 -->
+        <classPathEntry  
+            location="E:\maven\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar"/>
+        <context id="sqlserverTables" targetRuntime="MyBatis3">  
+            <!-- 生成的pojo，将implements Serializable  进行的序列化-->  
+            <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>  
+            <commentGenerator>  
+                <!-- 是否去除自动生成的注释 true：是 ： false:否 -->  
+                <property name="suppressAllComments" value="true" />  
+            </commentGenerator>  
+  
+            <!-- 数据库链接URL、用户名、密码 -->  
+            <jdbcConnection driverClass="com.mysql.jdbc.Driver"  
+                connectionURL="jdbc:mysql://localhost:3306/housedemo"
+                userId="root" 
+                password="123456">  
+            </jdbcConnection>  
+  
+            <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL   
+                和 NUMERIC 类型解析为java.math.BigDecimal -->  
+            <javaTypeResolver>  
+                <property name="forceBigDecimals" value="false" />  
+            </javaTypeResolver>  
+  
+            <!-- 生成model模型，对应的包路径，以及文件存放路径(targetProject)，targetProject可以指定具体的路径,如./src/main/java，   
+                也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下 -->  
+            <!--<javaModelGenerator targetPackage="com.joey.mybaties.test.pojo" targetProject="MAVEN"> -->  
+            <javaModelGenerator targetPackage="cn.xdl.ydma.entitycity"
+                targetProject="./src/main/java"  >
+                <property name="enableSubPackages" value="true" />  
+                <!-- 从数据库返回的值被清理前后的空格 -->  
+                <property name="trimStrings" value="true" />  
+            </javaModelGenerator>  
+  
+            <!--对应的mapper.xml文件 -->  
+            <sqlMapGenerator targetPackage="sql"  
+                targetProject="./src/main/resources">
+                <property name="enableSubPackages" value="true" />  
+            </sqlMapGenerator>  
+  
+            <!-- 对应的Mapper接口类文件 
+            ANNOTATEDMAPPER 这个是注解形式的SQL语句
+            XMLMapper   这个是xml形式的的sql语句
+            如果先看这个xml形式的sql语句 将type="XMLMapper"
+            -->
+            <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="cn.xdl.ydma.daocity" targetProject="./src/main/java">
+                <property name="enableSubPackages" value="true" />  
+            </javaClientGenerator>  
+  
+  
+            <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->  
+            <table tableName="%"  enableSelectByExample="false"
+		    	enableDeleteByExample="false"  enableCountByExample="false"
+		    	enableUpdateByExample="false">
+    		</table>  
+        </context>  
+    </generatorConfiguration>  
